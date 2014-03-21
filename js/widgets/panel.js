@@ -350,6 +350,11 @@ $.widget( "mobile.panel", {
 				},
 				complete = function() {
 
+					// Bail if the panel was closed before the opening animation has completed
+					if ( !self._open ) {
+						return;
+					}
+
 					if ( o.display !== "overlay" ) {
 						self._wrapper.addClass( o.classes.pageContentPrefix + "-open" );
 						self._fixedToolbars().addClass( o.classes.pageContentPrefix + "-open" );
