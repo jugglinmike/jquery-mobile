@@ -317,7 +317,7 @@ $.widget( "mobile.panel", {
 					}
 
 					if ( !immediate && $.support.cssTransform3d && !!o.animate ) {
-						self.element.animationComplete( complete, "transition" );
+						self._wrapper.animationComplete( complete, "transition" );
 					} else {
 						setTimeout( complete, 0 );
 					}
@@ -396,7 +396,7 @@ $.widget( "mobile.panel", {
 					}
 
 					if ( !immediate && $.support.cssTransform3d && !!o.animate ) {
-						self.element.animationComplete( complete, "transition" );
+						self._wrapper.animationComplete( complete, "transition" );
 					} else {
 						setTimeout( complete, 0 );
 					}
