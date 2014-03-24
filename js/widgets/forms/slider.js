@@ -9,6 +9,7 @@ define( [ "jquery",
 	"../../core",
 	"../../widget",
 	"./textinput",
+	"../../events/touch",
 	"./reset" ], function( jQuery ) {
 //>>excludeEnd("jqmBuildExclude");
 (function( $, undefined ) {
