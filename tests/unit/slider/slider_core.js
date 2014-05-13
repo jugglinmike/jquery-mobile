@@ -12,7 +12,7 @@
 	});
 
 	test( "refresh should force val to nearest step", function() {
-		var slider = $( "#step-slider" ),
+		var slider = $( "#step-slider" ).slider(),
 			step = parseInt(slider.attr( "step" ), 10);
 
 		slider.val( step + 1 );
@@ -25,12 +25,27 @@
 	});
 
 	test( "empty string value results defaults to slider min value", function() {
-		var slider = $( "#empty-string-val-slider" );
+		var slider = $( "#empty-string-val-slider" ).slider();
 		deepEqual( slider.attr('min'), "10", "slider min is greater than 0" );
 		deepEqual( slider.val( '' ).slider( 'refresh' ).val(), slider.attr('min'), "val is equal to min attr");
 	});
 
-	test( "flip toggle switch title should be current selected value attr", function() {
+	test( "handle should move when track receives a click", function() {
+		var slider = $("#track-click-slider").slider(),
+			track = slider.siblings(".ui-slider-track"),
+			handle = slider.parent().find(".ui-slider-handle"),
+			handleOffset = handle.offset();
+		var event = $.Event( "mousedown" );
+		event.target = track[0];
+		event.pageX = handleOffset.left + 200;
+		event.pagyY = handleOffset.top;
+
+		$("body").trigger(event);
+
+		notEqual(handleOffset.left, handle.offset().left);
+	});
+
+	/*test( "flip toggle switch title should be current selected value attr", function() {
 		var slider = $( "#slider-switch" );
 
 		deepEqual(slider.siblings(".ui-slider-switch").find("a").attr('title'),
@@ -104,5 +119,5 @@
 			ok( true, "slider changed" );
 		});
 		slider.trigger( "mouseup" );
-	});
+	});*/
 })( jQuery );
